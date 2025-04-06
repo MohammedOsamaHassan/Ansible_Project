@@ -1,0 +1,26 @@
+---
+- name: Install Apache on CentOS
+  when: ansible_os_family == "RedHat"
+  ansible.builtin.yum:
+    name: httpd
+    state: present
+
+- name: Install Apache on Ubuntu
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+
+- name: Start Apache on CentOs
+  when: ansible_os_family == "RedHat"
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: true
+
+- name: Start Apache on Ubuntu
+  when: ansible_os_family == "Debian"
+  ansible.builtin.service:
+    name: apache2
+    state: started
+    enabled: true

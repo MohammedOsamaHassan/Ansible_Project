@@ -1,0 +1,30 @@
+---
+- name: Install PHP for CentOs
+  when: ansible_os_family == "RedHat"
+  ansible.builtin.yum:
+    name:
+      - php
+      - php-mysqlnd
+      - php-gd
+      - php-json
+      - php-fpm
+      - php-xml
+    state: present
+
+- name: Install PHP for Ubuntu
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    name:
+      - php
+      - libapache2-mod-php
+      - php-mysql
+      - php-gd
+      - php-xml
+      - php-mbstring
+      - php-zip
+      - php-curl
+      - php-cgi
+      - php-soap
+      - php-json
+      - php-xmlrpc
+    state: present
