@@ -1,0 +1,10 @@
+---
+- name: Deploy wordpress
+  hosts: all
+  become: true
+
+  roles:
+    - apache
+    - php
+    - mysql
+    - wordpress

@@ -1,0 +1,102 @@
+---
+- name: Install MariaDB for CentOS
+  when: ansible_os_family == "RedHat"
+  ansible.builtin.yum:
+    name: mariadb-server
+    state: present
+
+- name: Install MariaDB for Ubuntu
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    name: mariadb-server
+    state: present
+
+- name: Start MariaDB on CentOs
+  when: ansible_os_family == "RedHat"
+  ansible.builtin.service:
+    name: mariadb
+    state: started
+    enabled: true
+
+- name: Start MariaDB on Ubuntu
+  when: ansible_os_family == "Debian"
+  ansible.builtin.service:
+    name: mysql
+    state: started
+    enabled: true
+
+- name: Install PyMySQL
+  ansible.builtin.pip:
+    name: PyMySQL
+
+- name: Secure MariaDB installation for CentOS
+  when: ansible_os_family == "RedHat"
+  community.mysql.mysql_user:
+    name: root
+    password: '{{ db_root_pass }}'
+    login_user: '{{ db_login_user }}'
+    login_password: '{{ db_root_pass }}'
+    login_host: '{{ db_login_host }}'
+    login_unix_socket: "/var/lib/mysql/mysql.sock"
+
+- name: Secure MariaDB installation for Ubuntu
+  when: ansible_os_family == "Debian"
+  community.mysql.mysql_user:
+    name: root
+    password: '{{ db_root_pass }}'
+    login_user: '{{ db_login_user }}'
+    login_password: '{{ db_root_pass }}'
+    login_host: '{{ db_login_host }}'
+    login_unix_socket: "/run/mysqld/mysqld.sock"
+  
+
+- name: Create wordpress database for CentOS
+  when: ansible_os_family == "RedHat"
+  community.mysql.mysql_db:
+    name: wordpress
+    state: present
+    login_user: '{{ db_login_user }}'
+    login_password: '{{ db_root_pass }}'
+    login_host: '{{ db_login_host }}'
+    login_unix_socket: "/var/lib/mysql/mysql.sock"
+
+- name: Create wordpress database for Ubuntu
+  when: ansible_os_family == "Debian"
+  community.mysql.mysql_db:
+    name: wordpress
+    state: present
+    login_user: '{{ db_login_user }}'
+    login_password: '{{ db_root_pass }}'
+    login_host: '{{ db_login_host }}'
+    login_unix_socket: "/run/mysqld/mysqld.sock"
+
+- name: Create Wordpress user for CentOS
+  when: ansible_os_family == "RedHat"
+  community.mysql.mysql_user:
+    name: '{{ db_wpuser }}'
+    password: '{{ db_wpuser_pass }}'
+    priv: "wordpress.*:ALL,GRANT"
+    state: present
+    login_user: '{{ db_login_user }}'
+    login_password: '{{ db_root_pass }}'
+    login_host: '{{ db_login_host }}'
+    login_unix_socket: "/var/lib/mysql/mysql.sock"
+
+- name: Create Wordpress user for Ubuntu
+  when: ansible_os_family == "Debian"
+  community.mysql.mysql_user:
+    name: '{{ db_wpuser }}'
+    password: '{{ db_wpuser_pass }}'
+    priv: "wordpress.*:ALL,GRANT"
+    state: present
+    login_user: '{{ db_login_user }}'
+    login_password: '{{ db_root_pass }}'
+    login_host: '{{ db_login_host }}'
+    login_unix_socket: "/run/mysqld/mysqld.sock"
+
+
+
+
+
+
+

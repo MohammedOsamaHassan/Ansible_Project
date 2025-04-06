@@ -1,0 +1,5 @@
+db_login_user: root
+db_login_host: localhost
+db_root_pass: 123456
+db_wpuser: wpuser
+db_wpuser_pass: 123456
