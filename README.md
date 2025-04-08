@@ -102,8 +102,9 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## ✨ Author
 
-- **Mohammed Osama Hassan**  
-[GitHub Profile](https://github.com/MohammedOsamaHassan)
+- ** Mohammed Osama **  
+- ** Saeed Raslan   **  
+- ** Omar Ashraf    **  
 
 ---
 
