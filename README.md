@@ -61,21 +61,29 @@ Feel free to explore the roles and customize them based on your setup and needs.
 
 ## 📁 Project Structure
 
-```bash
 Ansible_Project/
 │
 ├── inventory.ini           # Hosts inventory
-├── site.yml                # Main playbook entry
+├── playbook.yml            # Main playbook entry
 ├── roles/                  # Organized Ansible roles
-│   ├── webserver/
-│   │   ├── tasks/
-│   │   ├── handlers/
-│   │   ├── templates/
-│   │   └── vars/
-│   └── database/
+│   ├── apache/             # Installs and configures Apache
+│   │   └── tasks/
+│   │       └── main.yaml   # Apache role tasks
+│   ├── mysql/              # Installs and configures MySQL
+│   │   └── tasks/
+│   │       └── main.yaml   # MySQL role tasks
+│   ├── php/                # Installs PHP and extensions
+│   │   └── tasks/
+│   │       └── main.yaml   # PHP role tasks
+│   └── wordpress/          # Installs and configures WordPress
 │       ├── tasks/
-│       └── ...
+│       │   └── main.yaml   # WordPress role tasks
+│       └── templates/      # Configuration templates for WordPress
+│           ├── wordpress.confUbuntu.j2     # Apache config for Ubuntu
+│           └── wordpressCentOs.conf.j2     # Apache config for CentOS
 └── README.md               # Project documentation
+
+
 ```
 
 ---
