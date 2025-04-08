@@ -60,7 +60,7 @@ Feel free to explore the roles and customize them based on your setup and needs.
 ---
 
 ## 📁 Project Structure
-
+```text
 Ansible_Project/
 │
 ├── inventory.ini           # Hosts inventory
