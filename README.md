@@ -68,21 +68,20 @@ Ansible_Project/
 ├── roles/                  # Organized Ansible roles
 │   ├── apache/             # Installs and configures Apache
 │   │   └── tasks/
-│   │       └── main.yaml   # Apache role tasks
+│   │       └── main.yaml           # Apache role tasks
 │   ├── mysql/              # Installs and configures MySQL
 │   │   └── tasks/
-│   │       └── main.yaml   # MySQL role tasks
+│   │       └── main.yaml           # MySQL role tasks
 │   ├── php/                # Installs PHP and extensions
 │   │   └── tasks/
-│   │       └── main.yaml   # PHP role tasks
+│   │       └── main.yaml           # PHP role tasks
 │   └── wordpress/          # Installs and configures WordPress
 │       ├── tasks/
-│       │   └── main.yaml   # WordPress role tasks
-│       └── templates/      # Configuration templates for WordPress
+│       │   └── main.yaml           # WordPress role tasks
+│       └── templates/              # Configuration templates for WordPress
 │           ├── wordpress.confUbuntu.j2     # Apache config for Ubuntu
 │           └── wordpressCentOs.conf.j2     # Apache config for CentOS
 └── README.md               # Project documentation
-
 
 ```
 
